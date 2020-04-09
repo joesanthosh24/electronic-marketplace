@@ -1,0 +1,30 @@
+.navbar {
+    height: 75px;
+    width: 100%;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .home-link {
+        height: 100%;
+        width: 70px;
+        padding: 20px;
+        text-transform: uppercase;
+        color: grey;
+    }
+
+    .nav-options {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 50%;
+        height: 50%;
+        padding: 10px;
+
+        .option {
+            padding: 10px;
+            color: grey;
+        }
+    }
+}
