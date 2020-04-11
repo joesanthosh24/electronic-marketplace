@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import CartIcon from '../cart-icon/cart-icon.component';
 
 import './navbar.styles.scss';
 
-import { Link } from 'react-router-dom';
-
 import { auth } from '../../firebase/firebase.utils';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-const Navbar = ({ currentUser }) => (
+const Navbar = ({ currentUser, hidden }) => (
     <nav className="navbar">
         <Link className="home-link" to="/">
             Home
@@ -21,12 +23,17 @@ const Navbar = ({ currentUser }) => (
                     SIGN OUT
                 </div>)   
             }
+            <CartIcon />
         </div>
+        {
+            !hidden ? <CartDropdown /> : null
+        }
     </nav>
 );
 
-const mapStateToProps = state => ({
-    currentUser: state.user.currentUser
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+    currentUser,
+    hidden
 });
 
 export default connect(mapStateToProps)(Navbar);
