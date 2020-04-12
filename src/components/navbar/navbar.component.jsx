@@ -2,14 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import CartIcon from '../cart-icon/cart-icon.component';
-
 import './navbar.styles.scss';
 
 import { auth } from '../../firebase/firebase.utils';
-import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-const Navbar = ({ currentUser, hidden }) => (
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+import CartIcon from '../cart-icon/cart-icon.component';
+import WishListIcon from '../wishlist-icon/wishlist-icon.component';
+import WishListDropdown from '../wishlist-dropdown/wishlist-dropdown.component';
+
+const Navbar = ({ currentUser, cartHidden, wishListHidden }) => (
     <nav className="navbar">
         <Link className="home-link" to="/">
             Home
@@ -23,17 +25,22 @@ const Navbar = ({ currentUser, hidden }) => (
                     SIGN OUT
                 </div>)   
             }
+            <WishListIcon />
             <CartIcon />
         </div>
         {
-            !hidden ? <CartDropdown /> : null
+            !wishListHidden ? <WishListDropdown /> : null
+        }
+        {
+            !cartHidden ? <CartDropdown /> : null
         }
     </nav>
 );
 
-const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden }, wishlist }) => ({
     currentUser,
-    hidden
+    cartHidden: hidden,
+    wishListHidden: wishlist.hidden
 });
 
 export default connect(mapStateToProps)(Navbar);

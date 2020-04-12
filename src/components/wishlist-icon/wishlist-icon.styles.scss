@@ -1,0 +1,25 @@
+.wishlist-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 45px;
+    height: 45px;
+
+    .heart {
+        height: 30px;
+        width: 30px;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .wishlist-items-count {
+        position: absolute;
+        font-size: 14px;
+        padding-top: 3px;
+        font-weight: bold;
+        color: #808080;
+    }
+}
