@@ -9,10 +9,13 @@
     text-transform: uppercase;
     background-color: #000000;
     border: 1px solid #000000;
+    display: flex;
+    justify-content: center;
     
     &:hover {
         background-color: #ffffff;
         color: #000000;
+        border: 1px solid black;
     }
 
     &.google-button {
@@ -23,6 +26,18 @@
         &:hover {
             background-color: #ffffff;
             color: #357ae8;
+        }
+    }
+
+    &.inverted {
+        background-color: #ffffff;
+        color: #000000;
+        border: 1px solid black;
+
+        &:hover {
+            color: #ffffff;
+            background-color: #000000;
+            border: 1px solid #000000;
         }
     }
 }

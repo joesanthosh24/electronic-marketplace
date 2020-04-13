@@ -1,9 +1,10 @@
 import WishListActions from './wishlist.action.types';
 
-const { SET_HIDDEN } = WishListActions;
+const { SET_HIDDEN, ADD_ITEM } = WishListActions;
 
 const INITIAL_STATE = {
-    hidden: true
+    hidden: true,
+    items: []
 };
 
 const wishListReducer = (state=INITIAL_STATE, action) => {
@@ -13,6 +14,11 @@ const wishListReducer = (state=INITIAL_STATE, action) => {
                 ...state,
                 hidden: !state.hidden
             };
+        case ADD_ITEM:
+            return {
+                ...state,
+                items: [action.payload, ...state.items]
+            }
         default:
             return state;
     }
