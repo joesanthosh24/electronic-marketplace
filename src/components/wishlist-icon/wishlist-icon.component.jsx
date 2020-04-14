@@ -22,7 +22,6 @@ const WishListIcon = ({ setWishListHidden, setCartHidden, hidden }) => {
     return (
         <div className="wishlist-icon" onClick={handleClick} >
             <Heart className="heart" />
-            <span className="wishlist-items-count">0</span>
         </div>
     );
 };

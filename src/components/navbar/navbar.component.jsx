@@ -6,10 +6,9 @@ import './navbar.styles.scss';
 
 import { auth } from '../../firebase/firebase.utils';
 
-import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import CartIcon from '../cart-icon/cart-icon.component';
 import WishListIcon from '../wishlist-icon/wishlist-icon.component';
-import WishListDropdown from '../wishlist-dropdown/wishlist-dropdown.component';
+import DropdownDisplay from '../dropdown-display/dropdown-display.component';
 
 const Navbar = ({ currentUser, cartHidden, wishListHidden }) => (
     <nav className="navbar">
@@ -23,16 +22,16 @@ const Navbar = ({ currentUser, cartHidden, wishListHidden }) => (
                 <Link className="option" to="/registerandsignin">LOG IN</Link> :
                 (<div className="option" onClick={() => auth.signOut()}>
                     SIGN OUT
-                </div>)   
+                </div>)
             }
             <WishListIcon />
             <CartIcon />
         </div>
         {
-            !wishListHidden ? <WishListDropdown /> : null
+            !cartHidden ? <DropdownDisplay title="Cart" /> : null
         }
         {
-            !cartHidden ? <CartDropdown /> : null
+            !wishListHidden ? <DropdownDisplay title="Wishlist" /> : null
         }
     </nav>
 );
