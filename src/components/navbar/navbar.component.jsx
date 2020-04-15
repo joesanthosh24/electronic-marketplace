@@ -16,6 +16,7 @@ const Navbar = ({ currentUser, cartHidden, wishListHidden }) => (
             Home
         </Link>
         <div className="nav-options">
+            <Link className="option" to="/shop-items">SHOP</Link>
             <Link className="option" to="/contact">CONTACT US</Link>
             {
                 !currentUser ?

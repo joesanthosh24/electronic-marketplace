@@ -7,6 +7,7 @@ import './App.css';
 import HomePage from './pages/homepage/homepage.component';
 import Navbar from './components/navbar/navbar.component';
 import RegistrationAndLogin from './pages/registration-and-login/registration-and-login.component';
+import ShopPage from './pages/shop/shop.component';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
@@ -57,6 +58,7 @@ class App extends Component {
               this.props.currentUser ?
               (<Redirect to="/" />) : (<RegistrationAndLogin />)
             } />
+            <Route path="/shop-items" component={ShopPage} />
           </Switch>
         </div>
     );
