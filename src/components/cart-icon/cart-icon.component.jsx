@@ -1,37 +1,49 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import { toggleCartHidden } from '../../redux/cart/cart.actions';
-import { setListHidden } from '../../redux/wishlist/wishlist.actions';
+import { toggleCartHidden } from "../../redux/cart/cart.actions";
+import { setListHidden } from "../../redux/wishlist/wishlist.actions";
 
-import './cart-icon.component.scss';
+import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
 
-const CartIcon = ({ toggleCartHidden, toggleWishListHidden, hidden }) => {
-    const handleClick = () => {
-        toggleCartHidden();
+import "./cart-icon.component.scss";
 
-        if(hidden) {
-            return;
-        }
+const CartIcon = ({
+  toggleCartHidden,
+  toggleWishListHidden,
+  hidden,
+  itemCount,
+}) => {
+  const handleClick = () => {
+    toggleCartHidden();
 
-        toggleWishListHidden();
+    if (hidden) {
+      return;
     }
 
-    return (
-        <div className='cart-icon' onClick={handleClick}>
-            <img alt='shopping cart icon' className='shopping-icon' src="https://img.icons8.com/ios/50/000000/wallet.png"/>
-            <span className='item-count'>0</span>
-        </div>
-    )
+    toggleWishListHidden();
+  };
+
+  return (
+    <div className="cart-icon" onClick={handleClick}>
+      <img
+        alt="shopping cart icon"
+        className="shopping-icon"
+        src="https://img.icons8.com/ios/50/000000/wallet.png"
+      />
+      <span className="item-count">{itemCount}</span>
+    </div>
+  );
 };
 
-const mapDispatchToProps = dispatch => ({
-    toggleCartHidden: () => dispatch(toggleCartHidden()),
-    toggleWishListHidden: () => dispatch(setListHidden())
+const mapDispatchToProps = (dispatch) => ({
+  toggleCartHidden: () => dispatch(toggleCartHidden()),
+  toggleWishListHidden: () => dispatch(setListHidden()),
 });
 
-const mapStateToProps = ({ wishlist: { hidden } }) => ({
-    hidden
-})
+const mapStateToProps = (state) => ({
+  hidden: state.wishlist.hidden,
+  itemCount: selectCartItemsCount(state),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);

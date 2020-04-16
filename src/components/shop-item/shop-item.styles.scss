@@ -7,6 +7,21 @@
   position: relative;
   margin-right: 10px;
   margin-left: 10px;
+  opacity: 1;
+
+  &:hover {
+    opacity: 0.85;
+
+    .inverted {
+      display: flex;
+      opacity: 0.8;
+    }
+
+    .button {
+      display: flex;
+      opacity: 0.8;
+    }
+  }
 
   .title-price {
     width: 100%;
@@ -25,11 +40,30 @@
     }
   }
 
+  .red {
+    position: absolute;
+    width: 75%;
+    top: 160px;
+    display: none;
+    opacity: 0.75;
+    cursor: pointer;
+  }
+
+  .inverted {
+    position: absolute;
+    width: 75%;
+    top: 200px;
+    display: none;
+    opacity: 0.75;
+    cursor: pointer;
+  }
+
   .item-image {
     width: 100%;
     height: 95%;
     background-size: cover;
     background-position: center;
     margin-bottom: 5px;
+    border: 2px solid grey;
   }
 }

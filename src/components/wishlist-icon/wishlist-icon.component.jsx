@@ -7,6 +7,7 @@ import { setListHidden } from '../../redux/wishlist/wishlist.actions';
 import { toggleCartHidden } from '../../redux/cart/cart.actions';
 
 import './wishlist-icon.styles.scss';
+import { selectWishlistItems } from './../../redux/wishlist/wishlist.selectors';
 
 const WishListIcon = ({ setWishListHidden, setCartHidden, hidden }) => {
     const handleClick = () => {
@@ -31,8 +32,9 @@ const mapDispatchToProps = dispatch => ({
     setCartHidden: () => dispatch(toggleCartHidden())
 });
 
-const mapStateToProps = ({ cart: { hidden } }) => ({
-    hidden,
+const mapStateToProps = state => ({
+    hidden: state.cart.hidden,
+    itemCount: selectWishlistItems(state)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WishListIcon);

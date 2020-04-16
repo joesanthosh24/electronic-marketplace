@@ -10,7 +10,7 @@ import CartIcon from '../cart-icon/cart-icon.component';
 import WishListIcon from '../wishlist-icon/wishlist-icon.component';
 import DropdownDisplay from '../dropdown-display/dropdown-display.component';
 
-const Navbar = ({ currentUser, cartHidden, wishListHidden }) => (
+const Navbar = ({ currentUser, cartHidden, wishListHidden, cartItems, wishListItems }) => (
     <nav className="navbar">
         <Link className="home-link" to="/">
             Home
@@ -29,18 +29,20 @@ const Navbar = ({ currentUser, cartHidden, wishListHidden }) => (
             <CartIcon />
         </div>
         {
-            !cartHidden ? <DropdownDisplay title="Cart" /> : null
+            !cartHidden ? <DropdownDisplay items={cartItems} title="Cart" /> : null
         }
         {
-            !wishListHidden ? <DropdownDisplay title="Wishlist" /> : null
+            !wishListHidden ? <DropdownDisplay items={wishListItems} title="Wishlist" /> : null
         }
     </nav>
 );
 
-const mapStateToProps = ({ user: { currentUser }, cart: { hidden }, wishlist }) => ({
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden, items }, wishlist }) => ({
     currentUser,
     cartHidden: hidden,
-    wishListHidden: wishlist.hidden
+    wishListHidden: wishlist.hidden,
+    cartItems: items,
+    wishListItems: wishlist.items
 });
 
 export default connect(mapStateToProps)(Navbar);

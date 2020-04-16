@@ -1,6 +1,8 @@
 import WishListActions from './wishlist.action.types';
 
-const { SET_HIDDEN, ADD_ITEM } = WishListActions;
+import { addItemToDropDown } from '../shared/dropdown.utils';
+
+const { SET_HIDDEN, ADD_ITEM_TO_WISHLIST } = WishListActions;
 
 const INITIAL_STATE = {
     hidden: true,
@@ -14,10 +16,10 @@ const wishListReducer = (state=INITIAL_STATE, action) => {
                 ...state,
                 hidden: !state.hidden
             };
-        case ADD_ITEM:
+        case ADD_ITEM_TO_WISHLIST:
             return {
                 ...state,
-                items: [action.payload, ...state.items]
+                items: addItemToDropDown(state.items, action.payload)
             }
         default:
             return state;
