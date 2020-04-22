@@ -9,46 +9,30 @@ import {
 } from "../../redux/cart/cart.selectors";
 
 import "./checkoutpage.styles.scss";
+import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 
 const CheckoutPage = ({ cartItems, cartItemsTotal }) => (
   <div className="checkout-page">
+    <h1 className="checkout-title">CHECKOUT</h1>
+    <span className="items-span">CART ITEMS</span>
     <div className="checkout-header">
-      <h1 className="checkout-heading">CHECKOUT</h1>
-      <span className="items-span">CART ITEMS</span>
-      <div className="chekout-table-headings">
-        <div className="header-block">
-          <span>Product</span>
-        </div>
-        <div className="header-block">
-          <span>Description</span>
-        </div>
-        <div className="header-block">
-          <span>Quantity</span>
-        </div>
-        <div className="header-block">
-          <span>Price</span>
-        </div>
-        <div className="header-block">
-          <span>Remove</span>
-        </div>
+      <div className="header-block">
+        <span>Product</span>
       </div>
-      {cartItems.map((item) => (
-        <div className="item-data">
-          <div className="data-block">
-            <span>{item.name}</span>
-          </div>
-          <div className="data-block">
-            <span>{item.quantity}</span>
-          </div>
-          <div className="data-block">
-            <span>{item.price}</span>
-          </div>
-          <div className="data-block">
-            <span>X</span>
-          </div>
-        </div>
-      ))}
+      <div className="header-block">
+        <span>Description</span>
+      </div>
+      <div className="header-block">
+        <span>Quantity</span>
+      </div>
+      <div className="header-block">
+        <span>Price</span>
+      </div>
+      <div className="header-block">
+        <span>Remove</span>
+      </div>
     </div>
+    {cartItems.map(item => <CheckoutItem cartItem={item} key={item.id} />)}
   </div>
 );
 
