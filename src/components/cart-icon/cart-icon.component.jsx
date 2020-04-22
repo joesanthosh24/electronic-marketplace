@@ -1,31 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
-
-import { toggleCartHidden } from "../../redux/cart/cart.actions";
-import { setListHidden } from "../../redux/wishlist/wishlist.actions";
+import { createStructuredSelector } from 'reselect';
+import { withRouter } from 'react-router-dom';
 
 import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
 
 import "./cart-icon.component.scss";
 
 const CartIcon = ({
-  toggleCartHidden,
-  toggleWishListHidden,
-  hidden,
   itemCount,
+  history
 }) => {
-  const handleClick = () => {
-    toggleCartHidden();
-
-    if (hidden) {
-      return;
-    }
-
-    toggleWishListHidden();
-  };
 
   return (
-    <div className="cart-icon" onClick={handleClick}>
+    <div className="cart-icon" onClick={() => history.push('/checkout')}>
       <img
         alt="shopping cart icon"
         className="shopping-icon"
@@ -36,14 +24,8 @@ const CartIcon = ({
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  toggleCartHidden: () => dispatch(toggleCartHidden()),
-  toggleWishListHidden: () => dispatch(setListHidden()),
+const mapStateToProps = createStructuredSelector({
+  itemCount: selectCartItemsCount,
 });
 
-const mapStateToProps = (state) => ({
-  hidden: state.wishlist.hidden,
-  itemCount: selectCartItemsCount(state),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
+export default withRouter(connect(mapStateToProps)(CartIcon));

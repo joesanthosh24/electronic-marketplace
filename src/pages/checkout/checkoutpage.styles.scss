@@ -1,0 +1,36 @@
+.checkout-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .checkout-heading {
+    font-weight: lighter;
+    font-size: 33px;
+  }
+
+  .items-span {
+    margin-top: 20px;
+  }
+
+  .chekout-table-headings {
+    padding: 10px 0;
+    justify-content: space-between;
+    display: flex;
+    border-bottom: 1px solid grey;
+
+    .header-block {
+      margin: 5px 35px;
+    }
+  }
+
+  .item-data {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 12px;
+
+    .data-block {
+      margin: 5px 60px;
+    }
+  }
+}
