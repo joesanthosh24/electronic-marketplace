@@ -1,8 +1,8 @@
 import WishListActions from './wishlist.action.types';
 
-import { addItemToDropDown } from '../shared/dropdown.utils';
+import { addItem } from '../shared/items.utils';
 
-const { ADD_ITEM_TO_WISHLIST } = WishListActions;
+const { ADD_ITEM_TO_WISHLIST, REMOVE_ITEM_FROM_WISHLIST } = WishListActions;
 
 const INITIAL_STATE = {
     items: []
@@ -13,7 +13,12 @@ const wishListReducer = (state=INITIAL_STATE, action) => {
         case ADD_ITEM_TO_WISHLIST:
             return {
                 ...state,
-                items: addItemToDropDown(state.items, action.payload)
+                items: addItem(state.items, action.payload)
+            }
+        case REMOVE_ITEM_FROM_WISHLIST:
+            return {
+                ...state,
+                items: state.items.filter(item.id !== action.payload.id)
             }
         default:
             return state;

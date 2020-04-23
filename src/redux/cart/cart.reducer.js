@@ -1,19 +1,24 @@
 import { CartActionTypes } from './cart.action.types';
 
-import { addItemToDropDown } from '../shared/dropdown.utils'
+import { addItem } from '../shared/items.utils';
 
 const INITIAL_STATE = {
     items: []
 };
 
-const { ADD_ITEM_TO_CART } = CartActionTypes;
+const { ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_CART } = CartActionTypes;
 
 const cartReducer = (state=INITIAL_STATE, action) => {
     switch(action.type) {
         case ADD_ITEM_TO_CART:
             return {
                 ...state,
-                items: addItemToDropDown(state.items, action.payload)
+                items: addItem(state.items, action.payload)
+            }
+        case REMOVE_ITEM_FROM_CART:
+            return {
+                ...state,
+                items: state.items.filter(item => item.id != action.payload.id)
             }
         default:
             return state;
