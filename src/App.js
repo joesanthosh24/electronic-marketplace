@@ -12,6 +12,7 @@ import CheckoutPage from './pages/checkout/checkoutpage.component';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
+import WishlistPage from './pages/wishlist/wishlistpage.component';
 
 class App extends Component {
   constructor() {
@@ -61,6 +62,7 @@ class App extends Component {
             } />
             <Route exact path="/shop-items" component={ShopPage} />
             <Route exact path="/checkout" component={CheckoutPage} />
+            <Route exact path="/wishlist" component={WishlistPage} />
           </Switch>
         </div>
     );
