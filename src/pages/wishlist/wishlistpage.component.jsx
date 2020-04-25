@@ -5,7 +5,6 @@ import { createStructuredSelector } from "reselect";
 
 import "./wishlistpage.styles.scss";
 
-import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import { selectWishlistItemsTotal, selectWishlistItems } from "../../redux/wishlist/wishlist.selectors";
 import WishlistItem from "../../components/wishlist-item/wishlist-item.component";
 
@@ -25,10 +24,11 @@ const WishlistPage = ({ wishlistItems, wishlistItemsTotal }) => (
       <div className="header-block">
         <span>Price</span>
       </div>
+      <div className="button-block">
+        <span>Add to Cart</span>
+      </div>
       <div className="header-block">
         <span>Remove</span>
-      </div>
-      <div className="button-block">
       </div>
     </div>
     {wishlistItems.map(item => <WishlistItem cartItem={item} key={item.id} />)}
