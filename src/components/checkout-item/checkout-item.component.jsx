@@ -5,9 +5,7 @@ import "./checkout-item.styles.scss";
 import { createStructuredSelector } from 'reselect';
 
 const CheckoutItem = ({
-  cartItem,
-  arrow,
-  btn,
+  cartItem
 }) => {
   const { imageUrl, name, quantity, price } = cartItem;
 

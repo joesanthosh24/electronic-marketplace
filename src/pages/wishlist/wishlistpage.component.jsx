@@ -7,6 +7,7 @@ import "./wishlistpage.styles.scss";
 
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import { selectWishlistItemsTotal, selectWishlistItems } from "../../redux/wishlist/wishlist.selectors";
+import WishlistItem from "../../components/wishlist-item/wishlist-item.component";
 
 const WishlistPage = ({ wishlistItems, wishlistItemsTotal }) => (
   <div className="checkout-page">
@@ -27,8 +28,10 @@ const WishlistPage = ({ wishlistItems, wishlistItemsTotal }) => (
       <div className="header-block">
         <span>Remove</span>
       </div>
+      <div className="button-block">
+      </div>
     </div>
-    {wishlistItems.map(item => <CheckoutItem cartItem={item} key={item.id} />)}
+    {wishlistItems.map(item => <WishlistItem cartItem={item} key={item.id} />)}
   </div>
 );
 
