@@ -25,6 +25,9 @@ const WishlistPage = ({ wishlistItems, wishlistItemsTotal }) => (
       <div className="header-block">
         <span>Price</span>
       </div>
+      <div className="add-to-cart-block">
+        <span>Add To Cart</span>
+      </div>
       <div className="header-block">
         <span>Remove</span>
       </div>

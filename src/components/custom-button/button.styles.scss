@@ -1,8 +1,7 @@
 .button {
-    min-width: 170px;
+    min-width: 110px;
     width: auto;
     height: 36px;
-    padding: 10px 15px;
     outline: none;
     color: #ffffff;
     font-weight: bold;
@@ -16,6 +15,12 @@
         background-color: #ffffff;
         color: #000000;
         border: 1px solid black;
+    }
+
+    &.small {
+        padding: 5px;
+        width: 10px;
+        margin-right: 65px;
     }
 
     &.google-button {
