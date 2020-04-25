@@ -31,6 +31,8 @@ const WishlistPage = ({ wishlistItems, wishlistItemsTotal }) => (
       <div className="header-block">
         <span>Remove</span>
       </div>
+      <div className="button-block">
+      </div>
     </div>
     {wishlistItems.map(item => <WishlistItem cartItem={item} key={item.id} />)}
   </div>
