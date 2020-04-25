@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from 'react-redux';
 
-import "./checkout-item.styles.scss";
+import "./wishlist-item.styles.scss";
 import { createStructuredSelector } from 'reselect';
 
-const CheckoutItem = ({
-  cartItem
+const WishlistItem = ({
+  cartItem,
 }) => {
   const { imageUrl, name, quantity, price } = cartItem;
 
@@ -26,4 +26,4 @@ const CheckoutItem = ({
   );
 };
 
-export default CheckoutItem;
+export default WishlistItem;
