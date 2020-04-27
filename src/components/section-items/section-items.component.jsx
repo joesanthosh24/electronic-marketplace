@@ -1,29 +1,25 @@
-import React, { Component } from 'react';
+import React from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from 'reselect';
 
-import './section-items.styles.scss';
+import { selectSections } from '../../redux/sections/sections.selector';
 
-import items from './section-items.data';
-import SectionItem from '../section-item/section-item.component';
+import "./section-items.styles.scss";
 
-class SectionItems extends Component {
-    constructor() {
-        super();
+import SectionItem from "../section-item/section-item.component";
 
-        this.state = {
-            items,
-        }
-    }
+const SectionItems = ({ sections }) => {
+  return (
+    <div className="section-items">
+      {sections.map(({ id, ...otherItemData }) => (
+        <SectionItem key={id} {...otherItemData} />
+      ))}
+    </div>
+  );
+};
 
-    render() {
-        const { items } = this.state;
-        return (
-            <div className="section-items">
-                {items.map(({ id, ...otherItemData}) => (
-                    <SectionItem key={id} {...otherItemData} />
-                ))}
-            </div>
-        )
-    }
-}
+const mapStateToProps = createStructuredSelector({
+    sections: selectSections
+});
 
-export default SectionItems
+export default connect(mapStateToProps)(SectionItems);
