@@ -5,11 +5,16 @@ import { createStructuredSelector } from "reselect";
 
 import "./wishlistpage.styles.scss";
 
-import CheckoutItem from "../../components/checkout-item/checkout-item.component";
-import { selectWishlistItemsTotal, selectWishlistItems } from "../../redux/wishlist/wishlist.selectors";
+import {
+  selectWishlistItemsTotal,
+  selectWishlistItems,
+} from "../../redux/wishlist/wishlist.selectors";
 import WishlistItem from "../../components/wishlist-item/wishlist-item.component";
 
-const WishlistPage = ({ wishlistItems, wishlistItemsTotal }) => (
+const WishlistPage = ({ wishlistItems, wishlistItemsTotal }) => {
+  console.log(wishlistItems);
+
+  return (
   <div className="checkout-page">
     <h1 className="checkout-title">WISHLIST</h1>
     <div className="checkout-header">
@@ -31,12 +36,13 @@ const WishlistPage = ({ wishlistItems, wishlistItemsTotal }) => (
       <div className="header-block">
         <span>Remove</span>
       </div>
-      <div className="button-block">
-      </div>
     </div>
-    {wishlistItems.map(item => <WishlistItem cartItem={item} key={item.id} />)}
+    {wishlistItems.map((item) => (
+      <WishlistItem cartItem={item} key={item.id} />
+    ))}
   </div>
-);
+  );
+};
 
 const mapStateToProps = createStructuredSelector({
   wishlistItems: selectWishlistItems,
