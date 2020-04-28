@@ -1,5 +1,4 @@
 export const addItem = (items, itemToAdd) => {
-  console.log(items);
   const existingItem = items.find((item) => item.id === itemToAdd.id);
 
   if (existingItem) {
@@ -23,4 +22,12 @@ export const decreaseQuantity = (items, itemToDecrease) => {
       ? { ...item, quantity: item.quantity - 1 }
       : item
   );
+};
+
+export const getItemsCount = items => {
+  return items.reduce((acc, item) => acc + item.quantity, 0);
+};
+
+export const getItemsTotal = items => {
+  return items.reduce((acc, item) => acc + item.quantity*item.price, 0);
 };

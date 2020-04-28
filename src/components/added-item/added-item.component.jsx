@@ -7,7 +7,8 @@ const AddedItem = ({
   children,
   button,
   increase,
-  decrease
+  decrease,
+  listType
 }) => {
   const { imageUrl, name, quantity, price } = item;
 
@@ -18,9 +19,11 @@ const AddedItem = ({
     </div>
     <div className="name">{name}</div>
     <div className="quantity">
-      <div className="arrow arrow-left" onClick={() => decrease(item)}>&#10094;</div>
+      <div className="arrow arrow-left" onClick={() => {
+        decrease(item, listType)
+        }}>&#10094;</div>
       {quantity}
-      <div className="arrow" onClick={() => increase(item)}>&#10095;</div>
+      <div className="arrow" onClick={() => increase(item, listType)}>&#10095;</div>
     </div>
     <div className="price">${price}</div>
     {/* <div className={`

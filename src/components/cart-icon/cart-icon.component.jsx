@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 
-import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
+// import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
+import { selectCartItemsCount } from '../../redux/cart-wishlist/cart-wishlist.selectors';
 
 import "./cart-icon.component.scss";
 

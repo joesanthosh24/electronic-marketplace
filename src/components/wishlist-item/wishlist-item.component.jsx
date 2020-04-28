@@ -3,14 +3,16 @@ import { connect } from 'react-redux';
 
 import "./wishlist-item.styles.scss";
 
-import { addItemToWishlist, decreaseQuantity } from '../../redux/wishlist/wishlist.actions';
+import { addItem, decreaseQuantity } from '../../redux/cart-wishlist/cart-wishlist.actions';
+
+import listTypes from '../../utils/listType';
 
 import AddedItem from "../added-item/added-item.component";
 import Button from "../custom-button/button.component";
 
 const WishlistItem = ({ cartItem, addItem, decreaseItemCount }) => {
   return (
-    <AddedItem increase={addItem} decrease={decreaseItemCount} item={cartItem} button>
+    <AddedItem listType={listTypes.wishlist} increase={addItem} decrease={decreaseItemCount} item={cartItem} button>
       <Button inverted small>
         ADD
       </Button>
@@ -19,8 +21,8 @@ const WishlistItem = ({ cartItem, addItem, decreaseItemCount }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  addItem: (item) => dispatch(addItemToWishlist(item)),
-  decreaseItemCount: (item) => dispatch(decreaseQuantity(item))
+  addItem: (item, list) => dispatch(addItem(item, list)),
+  decreaseItemCount: (item, list) => dispatch(decreaseQuantity(item, list))
 })
 
 export default connect(null, mapDispatchToProps)(WishlistItem);

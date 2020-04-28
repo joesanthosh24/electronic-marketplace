@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { ReactComponent as Heart } from "../../assets/heart.svg";
 
 import "./wishlist-icon.styles.scss";
-import { selectWishlistItemsCount } from "./../../redux/wishlist/wishlist.selectors";
+import { selectWishlistItemsCount } from '../../redux/cart-wishlist/cart-wishlist.selectors';
 
 const WishListIcon = ({ itemCount, history }) => {
   return (
