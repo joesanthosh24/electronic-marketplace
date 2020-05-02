@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 // import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
 import { selectCartItemsCount } from '../../redux/cart-wishlist/cart-wishlist.selectors';
 
-import "./cart-icon.component.scss";
+import { CartIconContainer, CartImage, ItemSpan } from './cart-icon.styles';
 
 const CartIcon = ({
   itemCount,
@@ -14,14 +14,13 @@ const CartIcon = ({
 }) => {
 
   return (
-    <div className="cart-icon" onClick={() => history.push('/checkout')}>
-      <img
+    <CartIconContainer onClick={() => history.push('/checkout')}>
+      <CartImage
         alt="shopping cart icon"
-        className="shopping-icon"
         src="https://img.icons8.com/ios/50/000000/wallet.png"
       />
-      <span className="item-count">{itemCount}</span>
-    </div>
+      <ItemSpan className="item-count">{itemCount}</ItemSpan>
+    </CartIconContainer>
   );
 };
 

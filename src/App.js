@@ -60,7 +60,7 @@ class App extends Component {
               this.props.currentUser ?
               (<Redirect to="/" />) : (<RegistrationAndLogin />)
             } />
-            <Route exact path="/shop-items" component={ShopPage} />
+            <Route path="/shop-items" component={ShopPage} />
             <Route exact path="/checkout" component={CheckoutPage} />
             <Route exact path="/wishlist" component={WishlistPage} />
           </Switch>

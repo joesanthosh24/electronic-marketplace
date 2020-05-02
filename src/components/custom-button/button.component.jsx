@@ -1,22 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import './button.styles.scss';
+import { ButtonComponent } from "./button.styles";
 
-const Button = ({ children, isGoogleSignIn, red, inverted, small, ...otherProps }) => {
-    return (
-        <button 
-            className={`
-                ${inverted ? 'inverted' : ''}
-                ${isGoogleSignIn ? 'google-button' : ''}
-                ${red ? 'red' : ''}
-                ${small ? 'small' : ''}
-                button`
-            } 
-            {...otherProps}
-        >
-            {children}
-        </button>
-    )
+const Button = ({ children, ...props }) => {
+  return <ButtonComponent {...props}>{children}</ButtonComponent>;
 };
 
 export default Button;

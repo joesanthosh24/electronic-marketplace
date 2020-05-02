@@ -1,5 +1,5 @@
-const SHOP_DATA = [
-  {
+const SHOP_DATA = {
+  laptops: {
     id: 1,
     title: "Laptops",
     items: [
@@ -33,7 +33,7 @@ const SHOP_DATA = [
       },
     ],
   },
-  {
+  video_games: {
     id: 2,
     title: "Video Games",
     items: [
@@ -74,6 +74,6 @@ const SHOP_DATA = [
       },
     ],
   },
-];
+};
 
 export default SHOP_DATA;

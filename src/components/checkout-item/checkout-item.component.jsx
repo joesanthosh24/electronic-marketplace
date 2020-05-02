@@ -1,8 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import "./checkout-item.styles.scss";
-
 import { addItem, decreaseQuantity } from '../../redux/cart-wishlist/cart-wishlist.actions';
 
 import listTypes from '../../utils/listType';

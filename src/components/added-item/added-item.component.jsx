@@ -1,40 +1,43 @@
 import React from "react";
 
-import "./added-item.styles.scss";
+import {
+  AddedItemContainer,
+  ImageContainer,
+  Image,
+  NameDiv,
+  QuantityContainer,
+  PriceDiv,
+  ArrowDiv,
+  RemoveButton,
+} from "./added-item.styles";
 
-const AddedItem = ({
-  item,
-  children,
-  button,
-  increase,
-  decrease,
-  listType
-}) => {
+const AddedItem = ({ item, children, increase, decrease, listType }) => {
   const { imageUrl, name, quantity, price } = item;
 
   return (
-  <div className="added-item">
-    <div className="image-block">
-      <img src={`${imageUrl}`} alt="item" />
-    </div>
-    <div className="name">{name}</div>
-    <div className="quantity">
-      <div className="arrow arrow-left" onClick={() => {
-        decrease(item, listType)
-        }}>&#10094;</div>
-      {quantity}
-      <div className="arrow" onClick={() => increase(item, listType)}>&#10095;</div>
-    </div>
-    <div className="price">${price}</div>
-    {/* <div className={`
-        child-block
-        ${button ? 'button' : ''}
-      `
-    }> */}
-    {children}
-    {/* </div>     */}
-    <div className="remove-button">&#10005;</div>
-  </div>
-);}
+    <AddedItemContainer>
+      <ImageContainer>
+        <Image src={`${imageUrl}`} alt="item" />
+      </ImageContainer>
+      <NameDiv>{name}</NameDiv>
+      <QuantityContainer>
+        <ArrowDiv
+          onClick={() => {
+            increase(item, listType);
+          }}
+        >
+          ^
+        </ArrowDiv>
+        {quantity}
+        <ArrowDiv onClick={() => decrease(item, listType)}>
+          &#8964;
+        </ArrowDiv>
+      </QuantityContainer>
+      <PriceDiv>${price}</PriceDiv>
+      {children}
+      <RemoveButton>&#10005;</RemoveButton>
+    </AddedItemContainer>
+  );
+};
 
 export default AddedItem;
