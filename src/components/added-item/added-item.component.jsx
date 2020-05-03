@@ -11,8 +11,9 @@ import {
   RemoveButton,
 } from "./added-item.styles";
 
-const AddedItem = ({ item, children, increase, decrease, listType }) => {
+const AddedItem = ({ item, children, increase, decrease, listType, remove }) => {
   const { imageUrl, name, quantity, price } = item;
+  console.log(remove);
 
   return (
     <AddedItemContainer>
@@ -35,7 +36,7 @@ const AddedItem = ({ item, children, increase, decrease, listType }) => {
       </QuantityContainer>
       <PriceDiv>${price}</PriceDiv>
       {children}
-      <RemoveButton>&#10005;</RemoveButton>
+      <RemoveButton onClick={() => remove(item, listType)}>&#10005;</RemoveButton>
     </AddedItemContainer>
   );
 };
