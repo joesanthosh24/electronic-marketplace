@@ -5,11 +5,13 @@ import { createStructuredSelector } from "reselect";
 
 import {
   selectCartItems,
-  selectCartItemsTotal  
-} from '../../redux/cart-wishlist/cart-wishlist.selectors';
+  selectCartItemsTotal,
+} from "../../redux/cart-wishlist/cart-wishlist.selectors";
 
 import "./checkoutpage.styles.scss";
+
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
 
 const CheckoutPage = ({ cartItems, cartItemsTotal }) => (
   <div className="checkout-page">
@@ -32,7 +34,16 @@ const CheckoutPage = ({ cartItems, cartItemsTotal }) => (
         <span>Remove</span>
       </div>
     </div>
-    {cartItems.map(item => <CheckoutItem cartItem={item} key={item.id} />)}
+    {cartItems.map((item) => (
+      <CheckoutItem cartItem={item} key={item.id} />
+    ))}
+    <span className="item-total">Total: ${cartItemsTotal}</span>
+    <div className="test-warning">
+      *Please use the following test credit card for payments*
+      <br />
+      4242 4242 4242 4242 - Exp: Any future date in MM/YY format - CW: 123
+    </div>
+    <StripeCheckoutButton price={cartItemsTotal} />
   </div>
 );
 

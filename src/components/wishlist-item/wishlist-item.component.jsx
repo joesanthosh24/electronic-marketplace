@@ -11,9 +11,17 @@ import AddedItem from "../added-item/added-item.component";
 import Button from "../custom-button/button.component";
 
 const WishlistItem = ({ cartItem, addItem, decreaseItemCount, removeItem }) => {
+  const addToCart = (item, listTypeToAdd, listTypeToRemove) => {
+    for(let i=0; i<item.quantity; i++) {
+      addItem(item, listTypeToAdd);
+    }
+    
+    removeItem(item, listTypeToRemove);
+  }
+
   return (
     <AddedItem remove={removeItem} listType={listTypes.wishlist} increase={addItem} decrease={decreaseItemCount} item={cartItem} button>
-      <Button inverted small>
+      <Button onClick={() => addToCart(cartItem, listTypes.cart, listTypes.wishlist)} inverted small>
         ADD
       </Button>
     </AddedItem>
