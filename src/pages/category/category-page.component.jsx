@@ -8,6 +8,7 @@ import ShopItem from "../../components/shop-item/shop-item.component";
 import "./category-page.styles.scss";
 
 const CategoryPage = ({ collection }) => {
+  console.log(collection);
   const { title, items } = collection;
 
   return (
