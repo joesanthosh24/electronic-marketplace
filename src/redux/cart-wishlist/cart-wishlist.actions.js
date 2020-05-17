@@ -25,3 +25,7 @@ export const decreaseQuantity = (item, listToDecreaseFrom) => ({
     listToDecreaseFrom,
   },
 });
+
+export const clearCart = () => ({
+  type: ListActionTypes.CLEAR_CARTS
+})

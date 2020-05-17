@@ -2,7 +2,7 @@ import { ListActionTypes } from "./cart-wishlist.action.types";
 
 import { addItem, decreaseQuantity } from "../shared/items.utils";
 
-const { ADD_ITEM, REMOVE_ITEM, DECREASE_QUANTITY } = ListActionTypes;
+const { ADD_ITEM, REMOVE_ITEM, DECREASE_QUANTITY, CLEAR_CARTS } = ListActionTypes;
 
 const INITIAL_STATE = {
   cartItems: [],
@@ -34,6 +34,12 @@ const cartWishlistReducer = (state = INITIAL_STATE, action) => {
           state[action.payload.listToDecreaseFrom],
           action.payload.item
         ),
+      };
+    case CLEAR_CARTS:
+      return {
+        ...state,
+        cartItems: [],
+        wishlistItems: []
       };
     default:
       return state;

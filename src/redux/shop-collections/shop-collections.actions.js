@@ -4,11 +4,6 @@ import {
   FETCH_COLLECTIONS_SUCCESS,
 } from "./shop-collections.types";
 
-import {
-  firestore,
-  collectionsSnapshotToMapConvertion,
-} from "../../firebase/firebase.utils";
-
 export const fetchCollectionsStart = () => ({
   type: FETCH_COLECTIONS_START,
 });
@@ -24,16 +19,5 @@ export const fetchCOllectionsFailure = (errorMsg) => ({
 });
 
 export const fetchCollectionsStartAsync = () => {
-  return (dispatch) => {
-    const collectionReference = firestore.collection("collections");
-    dispatch(fetchCollectionsStart);
-
-    collectionReference
-      .get()
-      .then((snapshot) => {
-        const collectionsMap = collectionsSnapshotToMapConvertion(snapshot);
-        dispatch(fetchCollectionsSuccess(collectionsMap));
-      })
-      .catch((err) => dispatch(fetchCOllectionsFailure(err.message)));
-  };
+  
 };
