@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { selectCollection } from "../../redux/shop-collections/shop-collections.selectors";
@@ -6,6 +6,7 @@ import { selectCollection } from "../../redux/shop-collections/shop-collections.
 import ShopItem from "../../components/shop-item/shop-item.component";
 
 import "./category-page.styles.scss";
+import { firestore } from '../../firebase/firebase.utils';
 
 const CategoryPage = ({ collection }) => {
   console.log(collection);
