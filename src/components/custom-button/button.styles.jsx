@@ -56,6 +56,7 @@ const smallSize = css`
 
 const regularSize = css`
   width: auto;
+  padding: 10px;
 `;
 
 const getButtonStyles = (props) => {
@@ -70,9 +71,9 @@ const getButtonStyles = (props) => {
   }
 };
 
-const getButtonSizeStyles = props => {
-    return props.small ? smallSize : regularSize;
-}
+const getButtonSizeStyles = (props) => {
+  return props.small ? smallSize : regularSize;
+};
 
 export const ButtonComponent = styled.button`
   min-width: 110px;
